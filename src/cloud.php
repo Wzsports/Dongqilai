@@ -102,6 +102,7 @@ Cloud::afterDelete("Booking", function($obj, $user, $meta) {
  * 报名人数自动修改
  */
 function changeSign($obj){
+    $current_users = $obj->get('userContacts');
     $eventPointer = $obj->get('Event');
     $eventId = $eventPointer->getObjectId();
     error_log($eventId);
@@ -111,6 +112,7 @@ function changeSign($obj){
     $query->equalTo('payStatus', 1);
     $query->notEqualTo('cancelSignStatus', 1);
     $total = 0;
+    $total += count($current_users);
     $obj_signup = $query->find();
     foreach ($obj_signup as $value) {
         $user_contact = $value->get('userContacts');
