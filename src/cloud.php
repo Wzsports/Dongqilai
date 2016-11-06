@@ -108,8 +108,8 @@ function changeSign($obj){
 
     $query = new Query("EventSignUp");
     $query->equalTo('Event', $eventPointer);
-    $query->equalTo('payStatus', true);
-    $query->notEqualTo('cancelSignStatus', true);
+    $query->equalTo('payStatus', 1);
+    $query->notEqualTo('cancelSignStatus', 1);
     $total = $query->count();
     error_log($total);
 
