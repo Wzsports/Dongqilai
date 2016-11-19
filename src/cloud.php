@@ -52,8 +52,9 @@ Cloud::afterSave("Booking", function($obj, $user, $meta) {
     }
     // 人气自动更新
     // 查询之前的人气值
+    $gym = $obj->get('gym');
     $query = new Query("Gym");
-    $query->equalTo('objectId', $value['gym']->getObjectId());
+    $query->equalTo('objectId', $gym->getObjectId());
     $obj_gym = $query->find();
     if (isset($obj_gym[0])) {
         $popularity_set = $obj_gym[0]->get('popularitySet');
