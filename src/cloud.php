@@ -101,6 +101,9 @@ Cloud::afterSave("Booking", function($obj, $user, $meta) {
                 }
 
                 $popularity_plus += $hour_diff*$day_diff*$count;
+                error_log('hour_diff'.strval($hour_diff));
+                error_log('day_diff'.strval($day_diff));
+                error_log('count'.strval($count));
             } else {
                 // 门票类
                 $popularity_plus += $hour_diff*$count;
