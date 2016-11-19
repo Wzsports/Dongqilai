@@ -101,17 +101,13 @@ Cloud::afterSave("Booking", function($obj, $user, $meta) {
                 }
 
                 $popularity_plus += $hour_diff*$day_diff*$count;
-                error_log('hour_diff'.strval($hour_diff));
-                error_log('day_diff'.strval($day_diff));
-                error_log('count'.strval($count));
             } else {
                 // 门票类
                 $popularity_plus += $hour_diff*$count;
             }
         }
-        error_log('popularity_plus'.strval($popularity_plus));
-        error_log('popularity'.strval($popularity));
         $obj_gym[0]->set('popularity', $popularity+$popularity_plus);
+        $obj_gym[0]->save();
         error_log('人气自动更新成功');
     } else {
         error_log('人气自动更新失败，未查询到场馆');
