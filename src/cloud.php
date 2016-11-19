@@ -109,6 +109,8 @@ Cloud::afterSave("Booking", function($obj, $user, $meta) {
                 $popularity_plus += $hour_diff*$count;
             }
         }
+        error_log('popularity_plus'.strval($popularity_plus));
+        error_log('popularity'.strval($popularity));
         $obj_gym[0]->set('popularity', $popularity+$popularity_plus);
         error_log('人气自动更新成功');
     } else {
